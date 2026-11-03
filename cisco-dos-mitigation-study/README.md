@@ -101,7 +101,7 @@ iperf3 -c 10.1.20.10 -t 10                    # legitimate throughput
 
 ## Mitigation configs (the real thing)
 
-**CoPP — stateless, control plane**
+**CoPP - stateless, control plane**
 ```
 access-list 100 permit icmp any any
 class-map match-all ICMP-CLASS
@@ -113,7 +113,7 @@ control-plane
  service-policy input COPP-POLICY
 ```
 
-**ZBF — stateful, data plane**
+**ZBF - stateful, data plane**
 ```
 zone security OUTSIDE
 zone security INSIDE
