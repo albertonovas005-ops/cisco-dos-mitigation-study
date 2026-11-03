@@ -91,7 +91,7 @@ iperf3 -c 10.1.20.10 -t 10                    # legitimate throughput
 
 **1. CPU monitoring alone is not enough.** The unmitigated SYN flood destroyed legitimate throughput and produced 7.1M output drops, yet CPU stayed at 0%. The damage was on the data plane, invisible to control-plane CPU monitoring.
 
-**2. CoPP is a near-free shield for the control plane.** A token-bucket rate limit of 8,000 bps absorbed ~978,000 bps of ICMP flood (≈122× its ceiling) with no measurable CPU cost — but it only protects the control plane.
+**2. CoPP is a near-free shield for the control plane.** A token-bucket rate limit of 8,000 bps absorbed ~978,000 bps of ICMP flood (≈122× its ceiling) with no measurable CPU cost - but it only protects the control plane.
 
 **3. ZBF restores service for the data plane, at a cost.** Stateful inspection brought legitimate throughput back to baseline (944 Kbps) during the SYN flood, for a measurable 0.31% CPU increase from tracking connection state.
 
