@@ -1,6 +1,6 @@
 # Stateful vs. Stateless Defence: Comparing DoS Mitigation on Cisco IOS-XE
 
-A hands-on network security research project comparing two Denial-of-Service (DoS) mitigation strategies — stateless **Control Plane Policing (CoPP)** and stateful **Zone-Based Firewall (ZBF)** — in a virtualised enterprise network built from scratch.
+A hands-on network security research project comparing two Denial-of-Service (DoS) mitigation strategies - stateless **Control Plane Policing (CoPP)** and stateful **Zone-Based Firewall (ZBF)** - in a virtualised enterprise network built from scratch.
 
 > **BSc (Hons) Computer Networking & Cyber Security — First-Class Honours**
 > London Metropolitan University · Final-year dissertation project (CS6P05)
@@ -11,10 +11,10 @@ A hands-on network security research project comparing two Denial-of-Service (Do
 
 I designed and built a full three-tier enterprise network in GNS3 using real Cisco IOS-XE devices, launched real DoS attacks against it from a Kali Linux node, and measured how two different defences performed. The headline finding:
 
-- An **unmitigated TCP SYN flood** collapsed legitimate traffic and caused **7.1 million packet drops** while the router CPU still read **0%** — proving CPU monitoring alone misses data-plane exhaustion.
+- An **unmitigated TCP SYN flood** collapsed legitimate traffic and caused **7.1 million packet drops** while the router CPU still read **0%** - proving CPU monitoring alone misses data-plane exhaustion.
 - **Zone-Based Firewall (ZBF)** restored full service at a measurable cost of **0.31% CPU**.
 - **Control Plane Policing (CoPP)** absorbed an attack ~122× its configured rate limit with **no measurable CPU overhead**.
-- **Conclusion:** the two defences solve different problems — a layered, defence-in-depth design needs both.
+- **Conclusion:** the two defences solve different problems - a layered, defence-in-depth design needs both.
 
 ---
 
@@ -36,10 +36,10 @@ A **hierarchical three-tier architecture with centralised core routing**, built 
 ![Network topology](docs/topology.png)
 
 **Layers**
-- **Core layer** — Core Switch does all inter-VLAN routing via SVIs and acts as STP primary root. Edge Router is the WAN boundary where the security policies live.
-- **Distribution layer** — two switches (DS-1, DS-2) for redundancy, running Rapid PVST+ for a loop-free topology.
-- **Access layer** — segments endpoints into VLAN 10 (User) and VLAN 20 (DMZ Target Server).
-- **External untrusted zone** — a Kali Linux node that launches the attacks.
+- **Core layer** - Core Switch does all inter-VLAN routing via SVIs and acts as STP primary root. Edge Router is the WAN boundary where the security policies live.
+- **Distribution layer** - two switches (DS-1, DS-2) for redundancy, running Rapid PVST+ for a loop-free topology.
+- **Access layer** - segments endpoints into VLAN 10 (User) and VLAN 20 (DMZ Target Server).
+- **External untrusted zone** - a Kali Linux node that launches the attacks.
 
 **Addressing** (private/lab ranges only)
 
