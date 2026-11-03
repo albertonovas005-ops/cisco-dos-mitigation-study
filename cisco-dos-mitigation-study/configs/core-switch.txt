@@ -1,0 +1,33 @@
+! Core-Switch — Primary L3 Nexus & STP Root
+! Does all inter-VLAN routing (SVIs) and is the STP primary root for all VLANs.
+enable
+configure terminal
+hostname Core-Switch
+ip routing
+vlan 10,20,100
+exit
+spanning-tree vlan 10,20,100 root primary
+interface GigabitEthernet0/0
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+exit
+interface Vlan100
+ ip address 192.168.100.2 255.255.255.0
+ no shutdown
+exit
+interface Vlan10
+ ip address 10.1.10.1 255.255.255.0
+ no shutdown
+exit
+interface Vlan20
+ ip address 10.1.20.1 255.255.255.0
+ no shutdown
+exit
+ip route 0.0.0.0 0.0.0.0 192.168.100.1
+interface range GigabitEthernet0/1 - 2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shutdown
+exit
+write memory

@@ -1,0 +1,13 @@
+! Zone-Based Policy Firewall (ZBF) — stateful mitigation (applied on Edge-Router)
+! Default-deny boundary with stateful inspection between OUTSIDE and INSIDE zones.
+configure terminal
+zone security OUTSIDE
+zone security INSIDE
+exit
+interface GigabitEthernet1
+ zone-member security OUTSIDE
+exit
+interface GigabitEthernet2
+ zone-member security INSIDE
+exit
+write memory

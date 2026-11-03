@@ -1,0 +1,19 @@
+! Control Plane Policing (CoPP) — stateless mitigation (applied on Edge-Router)
+! Token-bucket rate limit protects the control plane from volumetric ICMP floods.
+configure terminal
+access-list 100 permit icmp any any
+class-map match-all ICMP-CLASS
+ match access-group 100
+ exit
+policy-map COPP-POLICY
+ class ICMP-CLASS
+  police 8000 conform-action transmit exceed-action drop
+  exit
+ exit
+control-plane
+ service-policy input COPP-POLICY
+ exit
+write memory
+
+! Verification:
+! show policy-map control-plane

@@ -1,0 +1,24 @@
+! Access-Switch — Endpoint Segmentation (VLAN 10 User, VLAN 20 DMZ Target)
+enable
+configure terminal
+hostname Access-Switch
+vlan 10,20
+exit
+interface range GigabitEthernet0/0 - 1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shutdown
+exit
+interface GigabitEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast edge
+ no shutdown
+exit
+interface GigabitEthernet0/3
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast edge
+ no shutdown
+exit
+write memory

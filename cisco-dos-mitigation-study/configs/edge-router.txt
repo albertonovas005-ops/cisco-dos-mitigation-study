@@ -1,0 +1,16 @@
+! Edge-Router — WAN boundary, static route to Core
+enable
+configure terminal
+hostname Edge-Router
+interface GigabitEthernet1
+ description EXTERNAL_UNTRUSTED_ZONE
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+exit
+interface GigabitEthernet2
+ description TRANSIT_TO_CORE
+ ip address 192.168.100.1 255.255.255.0
+ no shutdown
+exit
+ip route 10.1.0.0 255.255.0.0 192.168.100.2
+write memory
