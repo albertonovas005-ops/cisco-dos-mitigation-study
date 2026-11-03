@@ -2,7 +2,7 @@
 
 A hands-on network security research project comparing two Denial-of-Service (DoS) mitigation strategies - stateless **Control Plane Policing (CoPP)** and stateful **Zone-Based Firewall (ZBF)** - in a virtualised enterprise network built from scratch.
 
-> **BSc (Hons) Computer Networking & Cyber Security — First-Class Honours**
+> **BSc (Hons) Computer Networking & Cyber Security - First-Class Honours**
 > London Metropolitan University · Final-year dissertation project (CS6P05)
 
 ---
